@@ -1,0 +1,17 @@
+.incoming-message {
+  background-color: #e9e9eb;
+  margin-left: auto;
+}
+
+.outgoing-message {
+  background-color: #0c82fe;
+  margin-right: auto;
+}
+
+.message {
+  width: 350px;
+  height: 100px;
+  border: none;
+  border-radius: 20px;
+  padding: 30px;
+}
