@@ -6,12 +6,12 @@ export default function Messages({ messages }) {
 		<div className='message-container'>
 			{messages.map((message) => {
 				return message && message.recieved ? (
-					<div className='message incoming-message'>
-						{message.text}
+					<div className='message-bubble incoming-message'>
+						<p className='message'>{message.text}</p>
 					</div>
 				) : (
-					<div className='message outgoing-message'>
-						{message.text}
+					<div className='message-bubble outgoing-message'>
+						<p className='message'>{message.text}</p>
 					</div>
 				);
 			})}

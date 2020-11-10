@@ -8,5 +8,5 @@ io.on('connection', (socket) => {
 	bindListeners(socket, io);
 });
 
-io.listen(8001);
-console.log("Listening on port 8001")
+io.listen(process.env.PORT || 3000);
+console.log(`Listening on port ${process.env.PORT || 3000}`);

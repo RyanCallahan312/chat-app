@@ -8,18 +8,22 @@
   margin: 10px 0px 10px auto;
 }
 
-.message {
+.message-bubble {
   width: 350px;
   height: fit-content;
   border: none;
   border-radius: 20px;
   padding: 30px;
-  font-size: 18px;
-  font-family: sans-serif;
 }
 
 .message-container {
   width: 60%;
   overflow-y: scroll;
   max-height: 85vh;
+}
+
+.message {
+  font-size: 18px;
+  font-family: sans-serif;
+  overflow-wrap: break-word;
 }
