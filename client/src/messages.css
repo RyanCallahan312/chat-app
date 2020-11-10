@@ -1,17 +1,25 @@
 .incoming-message {
   background-color: #e9e9eb;
-  margin: 10px auto 10px 20%;
+  margin: 10px auto 10px 0px;
 }
 
 .outgoing-message {
   background-color: #0c82fe;
-  margin: 10px 20% 10px auto;
+  margin: 10px 0px 10px auto;
 }
 
 .message {
   width: 350px;
-  height: 100px;
+  height: fit-content;
   border: none;
   border-radius: 20px;
   padding: 30px;
+  font-size: 18px;
+  font-family: sans-serif;
+}
+
+.message-container {
+  width: 60%;
+  overflow-y: scroll;
+  max-height: 85vh;
 }

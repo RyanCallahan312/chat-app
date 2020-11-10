@@ -1,26 +1,29 @@
 form {
-    position: fixed;
-    bottom: 0px;
-    width: 100%;
-    display: flex;
-    margin-bottom: 20px;
-    justify-content: center;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: center;
 }
 
-.submit{
-    background-color: Transparent;
-    border: 1px solid black;
-    font-size: 20px;
-    width: fit-content;
-    height: fit-content;
-    margin: auto 10px;
+.submit {
+  background-color: Transparent;
+  border: 1px solid black;
+  font-size: 20px;
+  width: fit-content;
+  height: fit-content;
+  margin: auto 10px;
 }
 
-.text{
-    border-radius: 41px;
-    border: 1px solid black;
-    width: 40%;
-    height: 5vh;
-    outline-color: white;
-    padding: 20px;
+.text {
+  border-radius: 41px;
+  border: 1px solid black;
+  width: 40%;
+  height: fit-content;
+  outline-color: white;
+  padding: 20px;
+  outline: none;
+  font-size: 18px;
+  font-family: sans-serif;
 }

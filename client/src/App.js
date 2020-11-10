@@ -41,22 +41,21 @@ function App() {
 		newMessages.push({ text: currentMessage, recieved: false });
 
 		setMessages([...newMessages]);
+		setCurrentMessage('');
 	};
 
 	return (
-		<div>
+		<div style={{ display: 'flex', justifyContent: 'center' }}>
 			<Messages messages={messages} />
-			<div>
-				<form onSubmit={(e) => sendMessage(e)}>
-					<input
-						type='text'
-						className='text'
-						value={currentMessage}
-						onChange={(e) => setCurrentMessage(e.target.value)}
-					/>
-					<input className='submit' type='submit' value='Send' />
-				</form>
-			</div>
+			<form onSubmit={(e) => sendMessage(e)}>
+				<input
+					type='text'
+					className='text'
+					value={currentMessage}
+					onChange={(e) => setCurrentMessage(e.target.value)}
+				/>
+				<input className='submit' type='submit' value='Send' />
+			</form>
 		</div>
 	);
 }
