@@ -1,51 +1,62 @@
-import './App.css';
 import { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import * as EMISSIONS from './emissions';
+import Messages from './messages';
+import './App.css';
 
-const socket = io('http://localhost:8001');
+let socket;
 
 function App() {
 	const [messages, setMessages] = useState([]);
 	const [currentMessage, setCurrentMessage] = useState('');
 
 	useEffect(() => {
-		setMessages(() => {
-			console.log('first');
-			return messages.push({ text: currentMessage, recieved: false });
-		});
-		return () => socket.disconnect();
+		socket = io('http://localhost:8001');
+
+		socket.emit(EMISSIONS.JOIN_ROOM, 'Default Room');
+
+		window.onbeforeunload = () => {
+			console.log('unload');
+			socket.disconnect();
+		};
 	}, []);
 
-	const sendMessage = () => {
+	useEffect(() => {
+		socket.on(EMISSIONS.PUSH_MESSAGE, (message) => pushMessage(message));
+	});
+
+	const pushMessage = (message) => {
+		let newMessages = messages;
+		newMessages.push({ text: message, recieved: true });
+
+		setMessages([...newMessages]);
+	};
+
+	const sendMessage = (e) => {
+		e.preventDefault();
+
 		socket.emit(EMISSIONS.SEND_MESSAGE, currentMessage);
-		setMessages(() => {
-			console.log('second');
-			return messages.push({ text: currentMessage, recieved: false });
-		});
+
+		let newMessages = messages;
+		newMessages.push({ text: currentMessage, recieved: false });
+
+		setMessages([...newMessages]);
 	};
 
 	return (
 		<div>
-			{messages.map((message) =>
-				message && message.recieved ? (
-					<div className='message incoming-message'>
-						{message.text}
-					</div>
-				) : (
-					<div className='message outgoing-message'>
-						{message.text}
-					</div>
-				),
-			)}
-			<form onSubmit={sendMessage}>
-				<input
-					type='text'
-					value={currentMessage}
-					onChange={(e) => setCurrentMessage(e.target.value)}
-				/>
-				<input type='submit' value='Submit' />
-			</form>
+			<Messages messages={messages} />
+			<div>
+				<form onSubmit={(e) => sendMessage(e)}>
+					<input
+						type='text'
+						className='text'
+						value={currentMessage}
+						onChange={(e) => setCurrentMessage(e.target.value)}
+					/>
+					<input className='submit' type='submit' value='Send' />
+				</form>
+			</div>
 		</div>
 	);
 }
