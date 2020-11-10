@@ -1,0 +1,3 @@
+# chat-app
+
+Sample real time chat app for demo/code along in computer science club 11/10/2020
