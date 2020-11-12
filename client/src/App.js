@@ -11,7 +11,7 @@ function App() {
 	const [currentMessage, setCurrentMessage] = useState('');
 
 	useEffect(() => {
-		socket = io('http://localhost:8001');
+		socket = io('http://localhost:3001/');
 
 		socket.emit(EMISSIONS.JOIN_ROOM, 'Default Room');
 
